@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  twisc-prlab:
+    image: twisc-prlab
+    networks:
+      - frontend_network
+    ports: 
+      - '4700:4700'
+
+networks:
+  frontend_network:
+    external: true
+
+# networks:
+#   tul-frontend:
+#     driver: bridge
+#     external: true
+

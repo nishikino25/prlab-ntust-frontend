@@ -1,0 +1,42 @@
+{
+  "name": "twisc-prlab",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "npm i && vue-cli-service serve --port 4700",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "deploy": "npm run build && firebase deploy"
+  },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6",
+    "bootstrap-vue": "^2.0.4",
+    "core-js": "^3.8.3",
+    "firebase": "^9.2.0",
+    "flatpickr": "^4.5.1",
+    "nouislider": "^11.1.0",
+    "register-service-worker": "^1.5.2",
+    "sass": "^1.69.4",
+    "vue": "^2.7.15",
+    "vue-flatpickr-component": "^8.1.1",
+    "vue-i18n": "^8.26.5",
+    "vue-lazyload": "^1.2.6",
+    "vue-router": "^3.0.2",
+    "vue2-transitions": "^0.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-service": "^5.0.8",
+    "core-js": "^3.8.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "sass": "^1.69.4",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.14",
+    "vue2-transitions": "^0.2.3"
+  }
+}

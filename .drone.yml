@@ -1,0 +1,54 @@
+---
+kind: pipeline
+type: docker
+name: Staging
+
+steps:
+  - name: Build image
+    image: docker:20.10.0-dind
+    volumes:
+      - name: docker_socket
+        path: /var/run/docker.sock
+    commands:
+      - docker build -t twisc-prlab:latest -f /drone/src/deploy/dockerfiles/Dockerfile .
+
+  - name: Create service
+    image: docker/compose
+    volumes:
+      - name: docker_socket
+        path: /var/run/docker.sock
+    commands:
+      - docker-compose -f /drone/src/deploy/docker-compose.yml -p twisc-prlab down
+      - docker-compose -f /drone/src/deploy/docker-compose.yml -p twisc-prlab up -d
+
+  - name: Notify
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/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
+      channel: tul_dev
+      username: Drone CI
+      template: >
+        *{{#success build.status}}✔{{ else }}✘{{/success}} {{ uppercasefirst build.status }}: Build #{{ build.number }}* (type: `{{ build.event }}`)
+
+        Category: *Staging*
+
+        Commit: {{ repo.name }}/{{ truncate build.commit 8 }}
+
+        Branch: {{ build.branch }}
+
+        Author: {{ build.author }}
+
+        <{{ build.link }}|Visit build page ↗>
+    when: 
+      status: [ success, failure ]
+
+volumes:
+  - name: docker_socket
+    host:
+      path: /var/run/docker.sock
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
