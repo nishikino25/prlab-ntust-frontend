@@ -2,6 +2,7 @@ NTUST PRlab Official website
 ==
 ## Link
 https://lab.prlab.io/
+![image](https://github.com/nishikino25/prlab-ntust-frontend/assets/42590869/9f0cd28e-6039-46b9-873f-b7cb17c9d431)
 
 ## Environment
 
